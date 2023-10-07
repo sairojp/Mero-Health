@@ -1,0 +1,51 @@
+\input{setup/preamble.tex}% package inclusion and set up of the document
+\input{setup/hyphenations.tex}% 
+
+
+\begin{document}
+
+%frontmatter
+\pagestyle{empty} %disable headers and footers
+\input{sections/frontpage.tex}
+\input{sections/titlepage}
+%\input{sections/colophon.tex}
+\pagenumbering{roman} %use roman page numbering in the table of contents section (frontmatter)
+\input{sections/copyright}
+
+\addcontentsline{toc}{section}{ABSTRACT}
+\include{sections/abstractpage}
+
+
+
+% Before it was only /cleardoublepage, causing blank page between two
+\let\cleardoublepage\clearpage
+
+
+
+\addcontentsline{toc}{section}{TABLE OF CONTENTS}
+\tableofcontents
+
+
+\pagestyle{fancy} %enable headers and footers again
+% Add these sections if needed
+\listoffigures
+
+\cleardoublepage
+%mainmatter
+\pagenumbering{arabic} %use arabic page numbering in the mainmatter
+
+\input{sections/ch1_Introduction}
+\input{sections/ch2_Literature_Review}
+\input{sections/ch3_Feasibilitystudy}
+\input{sections/ch4_Methodology}
+\input{sections/ch5_SystemDesignAndArchitecture}
+\input{sections/ch6_ExpectedResults}
+%\input{sections/ch4timeschedule.tex}
+
+% Rename title "Bibliography" to "References" 
+\renewcommand{\bibname}{References}
+
+\printbibliography[heading=bibintoc]
+\label{bib:mybiblio}
+
+\end{document}

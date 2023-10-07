@@ -1,0 +1,40 @@
+\chapter{Time Schedule}\label{ch:timeschedule}
+\newcounter{loopcntr}
+\newcommand{\rpt}[2][1]{%
+  \forloop{loopcntr}{0}{\value{loopcntr}<#1}{#2}%
+}
+\newcommand{\on}[1][1]{
+  \forloop{loopcntr}{0}{\value{loopcntr}<#1}{&\cellcolor{gray}}
+}
+\newcommand{\off}[1][1]{
+  \forloop{loopcntr}{0}{\value{loopcntr}<#1}{&}
+}
+
+
+% A table with rows containing a pbox of 0.25 textwidth, followed by 24 pboxes
+\noindent\begin{tabular}{p{0.25\textwidth}*{12}{|p{0.04\textwidth}}|}
+% The top line
+\textbf{Tasks} & \multicolumn{12}{c|}{\textbf{Weeks}} 
+        
+           \\
+% The second line, with its 24 weeks
+\rpt[1]{& 2 & 4 & 6 & 8 & 10 & 12 & 14 & 16 & 18 & 20 & 22 & 24 }  \\
+\hline
+% using the on macro to fill in twenty cells as `on'
+Task1   \on[4] \off[8] \\
+\hline
+Task2       \off[3]   \on[2] \off[7]\\
+\hline
+Task3  \off[4]  \on[2] \off[6] \\
+\hline
+% using the on macro followed by the off macro
+Task4  \off[5]  \on[5] \off[2]\\
+\hline
+
+% using the on macro followed by the off macro
+Task5 \off[7]  \on[4] \off[1] \\ 
+\hline
+Task6 \on[12] \\
+
+\hline
+\end{tabular}
